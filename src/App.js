@@ -60,7 +60,6 @@ function App() {
     let count = 1;
     const [products, setProducts] = React.useState([]);
     const [partners, setPartners] = React.useState([]);
-    const [info, setInfo] = React.useState([]);
 
     React.useEffect(() => {
         document.title = t('page_title');
@@ -85,17 +84,7 @@ function App() {
             }
         }
         getPartners();
-        const getPayments = async () => {
-            try {
-                const res = await axios.get('https://test-provided_api_host/api/Payments');
-                setInfo(res);
-                console.log(info);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        getPayments();
-    }, [info])
+    }, [])
 
     const addToCart = (product) => {
         dispatch(addProduct({ ...product, count }))
