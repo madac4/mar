@@ -1,0 +1,84 @@
+.header {
+    padding: 20px 0;
+    &__logo{
+        img{
+            @include adaptiv-value('width', 200, 140, 1);
+        }
+    }
+    &__container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__left{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .language{
+            cursor: pointer;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.03em;
+            &-current{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @include adaptiv-value('padding', 15, 12, 1);
+                gap: 5px;
+                svg{
+                    transition: .2s;
+                }
+            }
+            &-dropdown{
+                position: absolute;
+                width: 100%;
+                top: 120%;
+                opacity: 0;
+                visibility: hidden;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                z-index: 2;
+                gap: 10px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+                transition: .3s;
+                text-align: center;
+                li{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    button{
+                        width: 100%;
+                        padding: 8px 0;
+                    }
+                }
+            }
+            &.active{
+                .language-current{
+                    svg{
+                        transform: rotate(180deg);
+                    }
+                }
+                ul{
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            
+
+        }
+    } 
+}
+@keyframes fixedHeader {
+    from {
+        transform: translateY(-50px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
